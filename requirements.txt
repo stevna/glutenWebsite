@@ -1,0 +1,7 @@
+requests
+flask
+pymongo
+flask-login
+bcrypt
+wtforms
+flask-wtf

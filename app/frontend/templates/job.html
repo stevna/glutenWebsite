@@ -1,0 +1,31 @@
+<div class="job" data-job_id="{{job.get('job_id')}}">
+    <h3>{{job.get("job_title")}}</h3>
+
+    {% with recommendation = job.get("ai_recommendation", "") %}
+    <div class="ai-recommendation-container" style="display:flex; align-items: center; {%if not recommendation%} height: 0 {%endif%}">
+    <p class="ai_recommendation" data-job_id="{{job.get('job_id')}}">{{recommendation}}</p>
+        <button class="delete-recommendation-btn red" {% if not recommendation %} style="display:none" {% endif %} data-job_id="{{job.get('job_id')}}">
+        Empfehlung löschen
+    </button>
+    </div>
+    {% endwith %}
+
+
+    <div class="button-container">
+        <button class="open_job_description" data-job_url="{{job.get('job_url')}}" data-job_id="{{job.get('job_id')}}">
+            Job Ausschreibung öffnen
+        </button>
+        <button class="ai_recommendation_button" data-job_url="{{job.get('job_url')}}"
+                data-job_id="{{job.get('job_id')}}"
+                {% if job.get("ai_recommendation") %} disabled {%endif%}>AI Empfehlung anfordern
+        </button>
+        <button class="ai_application_button" data-job_url="{{job.get('job_url')}}">
+                         Bewerbungsbrief herunterladen
+        </button>
+        <button class="ack_button {%if not
+            to_acknowledge%}unacknowledge{%endif%}" data-job_id="{{job.get('job_id')}}" data-job_source={{job.get('job_source')}}>{%if
+            to_acknowledge%}Quittieren{%else%}Entquittieren{%endif%}
+        </button>
+    </div>
+
+</div>

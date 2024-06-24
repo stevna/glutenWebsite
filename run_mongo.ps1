@@ -1,0 +1,1 @@
+docker run -d -p 27016:27017 -v mongo_gluten_website:/data/db mongo:latest

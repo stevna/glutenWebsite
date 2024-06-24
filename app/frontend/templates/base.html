@@ -1,0 +1,138 @@
+<head>
+    <link rel="stylesheet" href="static/base.css">
+    <link rel="stylesheet" href="static/base.css">
+    <link rel="stylesheet" href="static/content.css">
+    <link rel="stylesheet" href="static/sidebar.css">
+    <script src="static/js/main.js" defer></script>
+    <script src="static/js/instructions.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<div class="header">
+    <div class="left">
+        <h1>Gluten Frei</h1>
+    </div>
+
+    <div class="center">
+        <button class="icon instructions">
+            Prinzip
+        </button>
+    </div>
+
+
+    <div class="right">
+        <button class="icon add">
+            <img src="static/icons/add-line.svg" width="30px" height="30px">
+        </button>
+
+        <button class="icon logout" onclick="location.href='/logout'">
+            <img src="static/icons/logout-box-line.svg" width="30px" height="30px">
+        </button>
+
+    </div>
+
+
+</div>
+
+<dialog class="add-dialog" open>
+    <div class="container">
+        <div class="dialog-header">
+            <h3>
+                Lebensmittel Eintrag erstellen</h3>
+        </div>
+
+        <div class="main-content">
+            <div class="entry"><span>Name</span> <input type="text" name="name"></div>
+            <div class="entry"><span>Category</span> <input type="text"></div>
+            <div class="entry"><span>Kaufort</span> <input type="text"></div>
+            <div class="entry"><span>Kaufkette</span> <input type="text"></div>
+            <div class="entry"><span>Preis</span> <input type="text"></div>
+            <div class="entry"><span>Stichwörter</span> <input type="text"></div>
+            <!--<div class="entry"><span>Bild</span> <input type="file" style="display:none" id="select-image-input"/>
+                <button id="select-image-button">Select Image</button>
+            </div>-->
+            <div class="entry"><span>Bild</span> <input type="file" id="select-image-input"/>
+            </div>
+
+        </div>
+        <div class="button-container">
+            <button class="button red close">Close</button>
+            <button class="button green save" style="background-color: #4c9598">Save
+            </button>
+        </div>
+
+    </div>
+
+</dialog>
+
+{% include "instructions_dialog.html"%}
+
+<script>
+    let add_icon = document.querySelector(".icon.add")
+    let add_dialog = document.querySelector(".add-dialog")
+
+    add_icon.addEventListener("click", function(){
+        add_dialog.show()
+    })
+
+    const closeButton_add_dialog = document.querySelector("dialog.add-dialog button.close")
+    closeButton_add_dialog.addEventListener("click", () => {
+    add_dialog.close();
+    });
+
+    const saveButton_add_dialog = document.querySelector("dialog.add-dialog button.save")
+    saveButton_add_dialog.addEventListener("click", async () => {
+         let all_inputs = document.querySelectorAll("dialog.add-dialog .entry input")
+         let serializedInputs = {};
+         console.log("serialize before")
+            for (let i = 0; i < all_inputs.length; i++) {
+              const input = all_inputs[i];
+              serializedInputs[input.name] = input.value;
+            }
+
+        const response = await fetch('/food', {
+            method: 'POST',
+            body: JSON.stringify(serializedInputs),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        const responseText = await response.text();
+        if (response.status !== 200) {
+            alert("Es gab einen Fehler beim quittieren, bitte die Seite neu laden und erneut probieren.")
+            return
+        }
+        console.log("responseText")
+    });
+
+   //document.querySelector('#select-image-button').addEventListener('click', function(){
+   //document.querySelector('#select-image-input').click();
+//  });
+
+
+    let image = document.querySelector('#select-image-input')
+    image.addEventListener("change", async function(){
+        alert("hello")
+        const selectedImage = this.files[0];
+        console.log("selectedImage: ", selectedImage)
+
+        const formData = new FormData();
+  formData.append('file', selectedImage);
+  console.log("formdata: ", formData)
+
+    const response = await fetch('/upload-image', { // Replace '/upload' with your server's upload endpoint
+      method: 'POST',
+      body: formData
+    });
+
+    })
+
+
+
+</script>
+
+
+{% block content %}
+{% endblock %}
+

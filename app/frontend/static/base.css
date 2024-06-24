@@ -1,0 +1,273 @@
+body{
+margin: 0;
+}
+
+ .header {
+    width: 100%;
+    height: 60px;
+    background-color: #131921;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+    }
+
+    .header h1{
+    color: white;
+    margin-left: 30px}
+
+    .header .right {
+        margin-right: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        }
+
+
+
+     .header .right .user-options {
+        display: flex;
+        align-items: center;
+        margin-right: 50px;
+        height: 100%;
+        }
+
+
+
+       .header .right .all-options .dropdown {
+            display: none;
+        }
+
+
+
+    .header .icon{
+        background-color: #A1ACBD;
+        height: 100%
+    }
+
+    .header .icon:hover{
+        cursor: pointer;
+    }
+
+    .header .icon img{
+        width: 60px
+    }
+
+     .header .right button {
+        width: 75px;
+    }
+
+    .header .center{
+        height: 100%;
+    }
+
+     .header .center button {
+        width: 130px;
+    }
+
+
+     dialog .button-container{
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-evenly;
+        margin-right: 10px;
+    }
+    dialog .button-container button{
+        color: white;
+        width: 80px;
+        height: 30px
+    }
+
+    dialog .button-container .green{
+        background-color: green;
+    }
+
+    dialog .button-container .red{
+        background-color: red;
+    }
+
+    dialog .button-container .blue{
+        background-color: blue;
+    }
+
+
+    dialog.job-description{
+        width: 50%;
+        margin-top: 20vh
+    }
+
+    dialog.money{
+        width: 20%;
+        margin-top: 20vh
+    }
+
+    dialog.gpt-version{
+        width: 20%;
+        margin-top: 20vh
+    }
+
+    dialog.gpt-version .radio{
+        margin-bottom: 20px
+    }
+
+    dialog.gpt-version .radio input[type="radio"] {
+  display: none;
+}
+
+dialog.gpt-version .radio span {
+  display: inline-block;
+  padding: 10px;
+  text-transform: uppercase;
+  border: 2px solid gold;
+  border-radius: 3px;
+  color: gold;
+}
+
+dialog.gpt-version .radio input[type="radio"]:checked + span {
+  background-color: gold;
+  color: black;
+}
+
+
+dialog.instructions{
+        width: 60%;
+        margin-top: 20vh;
+        height: 60vh;
+        position: relative;
+        overflow-x: hidden;
+
+    }
+
+dialog.instructions .arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+    }
+
+ dialog.instructions .arrow img{
+  width: 80px;
+  height: 80px;
+    }
+
+
+
+dialog.instructions .arrow.left {
+    left: 0;
+    margin-left: -10px;
+}
+
+dialog.instructions .arrow.right{
+  right: 0;
+  margin-right: -10px;
+    }
+
+dialog.instructions .container {
+ height: 100%;
+            display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+dialog.instructions h1{
+        color: black;
+        margin-left: 0
+    }
+
+dialog.instructions .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
+
+dialog.instructions .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
+
+ dialog.instructions .content .button-container{
+      width: 100%;
+    }
+
+
+ dialog.add-dialog{
+        width: 30%;
+        margin-top: 20vh;
+        height: 35vh;
+        z-index: 5
+ }
+
+  dialog.add-dialog .container{
+    position: relative;
+    height: 100%
+ }
+
+ dialog.add-dialog .container .main-content .entry{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+
+ }
+
+
+ dialog.add-dialog .container .button-container{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 30px;
+    width: 100%
+ }
+
+
+  @media only screen and (max-width: 600px) {
+    .header{
+        height: 40px;
+        justify-content: space-between;
+    }
+
+    .header .left {
+    width: 110px
+
+    }
+
+    .header .right {
+    width: 110px;
+    margin-right: 0;
+
+    }
+
+    .header h1{
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+   .header .center button {
+        width: 80px;
+    }
+
+    .header .right button {
+        width: 60px;
+        height: 40px
+    }
+
+    .header .right .user-options{
+        display: none;
+    }
+    .header .right .all-options{
+    display: block;}
+
+    .header .right .all-options:hover + .user-options{
+        display: block;
+        background-color: red;
+
+    }
+
+
+}
+
+
+
+
+

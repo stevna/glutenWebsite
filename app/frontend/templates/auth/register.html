@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="static/auth.css">
+
+
+<div class="auth-container">
+    <form method="POST" action="/register" class="register">
+        <h3>Willkommen beim Job Such Helfer</h3>
+        {{ form.csrf_token }}
+        {{ form.email.label }} {{ form.email }}
+        {%if "email" in form.errors %}
+        <p style="color: red; margin-top: 2px; margin-bottom: 0px">{{form.errors["email"][0]}}</p>
+        {%endif%}
+        {% include "pieces/flash_message.html"%}
+        <br>
+        {{ form.password.label }} {{ form.password }}
+        <br>
+        {{ form.password_verify.label }} {{ form.password_verify }}
+        {%if "password" in form.errors %}
+        <p style="color: red; margin-top: 2px; margin-bottom: 0px">{{form.errors["password"][0]}}</p>
+        {%endif%}
+
+
+        <br>
+        <br>
+
+        <div class="submit-container">
+            <input type="submit" value="Registrieren">
+            <p>or</p>
+            <button onclick="location.href='/login'">Log dich ein</button>
+        </div>
+    </form>
+</div>

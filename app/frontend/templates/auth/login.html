@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="static/auth.css">
+
+<div class="auth-container">
+    <form method="POST" action="/login" class="login">
+        <h3>Willkommen beim Job Such Helfer</h3>
+        {{ form.csrf_token }}
+        {{ form.email.label }} {{ form.email }}
+        <br>
+        {{ form.password.label }} {{ form.password }}
+
+       {% include "pieces/flash_message.html"%}
+
+        <br>
+        <br>
+        <div class="submit-container">
+            <input type="submit" value="Login">
+            <p>or</p>
+            <button onclick="location.href='/register'">Erstelle ein Konto</button>
+
+
+        </div>
+    </form>
+</div>

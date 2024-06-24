@@ -1,0 +1,128 @@
+.content h1 {
+        margin-bottom: 10px;
+    }
+
+    .content{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .content .all_jobs {
+        width: 100%
+    }
+
+    .content .job-content{
+       width: 70%;
+       margin: 50px;
+       display: flex;
+       flex-direction: column;
+
+    }
+
+    button a{
+       color: black;
+       text-decoration: none;
+    }
+
+    .content .acknowledged {
+        margin-top: 20px;
+        display: none;
+        background-color: #94e088;
+        padding-bottom: 15px;
+        }
+
+
+    .crawl-jobs-container{
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .content h1:not(:first-child) {
+    margin-top: 40px
+}
+
+    .content .pop-out{
+        height: 100vh;
+        background-color: #A1ACBD;
+        width: 300px;
+        color: #131921
+    }
+
+    .content .pop-out{
+        display: absolute;
+    }
+    .pop-out .burger-menu {
+        //width: 30px;
+        //height: 30px;
+        display: flex;
+        justify-content: end
+    }
+
+    .burger-menu img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .burger-menu.unfold {
+        display: none;
+    }
+
+    .content .job-content .show_acknowledged{
+    margin-left: 15px;
+    margin-top: 20px;
+     height: 50px;
+        width: 130px;
+        background-color: #94e088;
+        border-width: thin
+    }
+
+    .content .job-content hr{
+    width:100%;
+    text-align:left;
+    margin-left:0;
+    margin-top: 40px;
+    height: 2px;
+    background-color: black"
+    }
+
+    .content .job-content .job{
+        margin-bottom: 40px;
+        padding-left: 10px;
+    }
+
+    .content .job-content .job .ai_recommendation{
+        width: 80%;
+    }
+
+    .content .job-content .job .delete-recommendation-btn {
+        width: 100px;
+    margin-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    }
+
+    .content .job-content .job .button-container button{
+        height: 50px;
+        width: 130px;
+        background-color: #A1ACBD;
+        border-width: thin
+    }
+
+    .content .job-content .job button:hover{
+        cursor: pointer;
+    }
+
+    .content .job-content .job .button-container{
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        width: 80%;
+        justify-content: space-evenly;
+
+    }
+
+    .content button.red {
+        background-color: red;
+        color: white
+    }

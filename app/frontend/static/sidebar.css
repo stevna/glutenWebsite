@@ -1,0 +1,49 @@
+.inputs-container {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        margin-bottom: 20px
+        }
+
+    .inputs-container .input {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px
+    }
+
+     .inputs-container .input.sources {
+        margin-top: -10px;
+    }
+
+     .inputs-container .input.sources h5 {
+        margin-bottom: 10px;
+    }
+
+    .inputs-container input[type=text] {
+        width: 200px;
+        margin-top: 5px;
+        height: 22px;
+        }
+
+    .inputs-container .input .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 150px;
+        align-items: center
+    }
+
+    .inputs-container .crawl-jobs-container button {
+        width: 120px;
+        height: 35px;
+        background-color: white;
+        border-width: thin
+    }
+    .inputs-container .crawl-jobs-container button:hover {
+    cursor: pointer
+    }
+
+    .inputs-container .crawl-jobs-container button img {
+        width: 25px;
+        height: 25px
+    }

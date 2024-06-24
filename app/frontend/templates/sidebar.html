@@ -1,0 +1,28 @@
+
+
+<div class="inputs-container">
+    <h3>Neue Jobs Suche</h3>
+    <div class="input">
+        Voll Text
+        <input type="text" name="filter_fulltext" value="{{search_filter.get('filter_fulltext', '')}}" placeholder="z.B Sozialarbeiter">
+    </div>
+
+    <div class="input">
+        Ort
+        <input type="text" name="filter_place" value="{{search_filter.get('filter_place', '')}}" placeholder="z.B. schaffhausen,zürich">
+    </div>
+
+    <div class="input">
+        Preis
+        <div class="row" style="width: 200px">
+            <input style="width: 80px" type="text" name="filter_from_range" value="{{search_filter.get('filter_from_range', '')}}" placeholder="z.B. 50">
+            bis
+            <input style="width: 80px" type="text" name="filter_to_range" value="{{search_filter.get('filter_to_range', '')}}" placeholder="z.B. 100">
+        </div>
+    </div>
+
+
+    </div>
+
+
+</div>
