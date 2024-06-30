@@ -6,8 +6,30 @@
     <script src="static/js/main.js" defer></script>
     <script src="static/js/instructions.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=&libraries=places&callback=initialize&loading=async"
+            defer></script>
 </head>
 
+
+<style>
+
+    .add-dialog .main-content .buttons{
+        width: 300px;
+        margin-top: 10px;
+    }
+
+    .add-dialog .main-content .buttons button{
+        border-radius: 50px;
+        margin-bottom: 5px;
+    }
+
+    .add-dialog .main-content .buttons button.active{
+        background-color: lightblue;
+    }
+
+
+</style>
 
 <div class="header">
     <div class="left">
@@ -35,7 +57,7 @@
 
 </div>
 
-<dialog class="add-dialog" open>
+<dialog class="add-dialog">
     <div class="container">
         <div class="dialog-header">
             <h3>
@@ -44,15 +66,20 @@
 
         <div class="main-content">
             <div class="entry"><span>Name</span> <input type="text" name="name"></div>
-            <div class="entry"><span>Category</span> <input type="text"></div>
-            <div class="entry"><span>Kaufort</span> <input type="text"></div>
-            <div class="entry"><span>Kaufkette</span> <input type="text"></div>
-            <div class="entry"><span>Preis</span> <input type="text"></div>
-            <div class="entry"><span>Stichwörter</span> <input type="text"></div>
+<!--            <div class="entry"><span>Category</span> <input type="text" name="category"></div>-->
+            <div class="entry"><span>Kaufort</span> <input type="text" name="buy_place"></div>
+            <div class="entry"><span>Preis</span> <input type="text" name="price"></div>
+<!--            <div class="entry"><span>Stichwörter</span> <input type="text" name="keywords"></div>-->
+            <div class="buttons">
+                <button data-name="vegetarian">Vegetarisch</button>
+                <button data-name="vegan">Vegan</button>
+                <button data-name="lactosefree">Laktose Frei</button>
+                <button data-name="can_contain_traces">Kann Gluten Spuren enthalten</button>
+            </div>
             <!--<div class="entry"><span>Bild</span> <input type="file" style="display:none" id="select-image-input"/>
                 <button id="select-image-button">Select Image</button>
             </div>-->
-            <div class="entry"><span>Bild</span> <input type="file" id="select-image-input"/>
+            <div class="entry"><span>Bild</span> <input type="file" id="select-image-input" name="image"/>
             </div>
 
         </div>
@@ -68,7 +95,13 @@
 
 {% include "instructions_dialog.html"%}
 
-<script>
+<script defer>
+
+    function initialize() {
+    let buy_place_input = document.querySelector(".entry input[name='buy_place']")
+  new google.maps.places.Autocomplete(buy_place_input);
+}
+
     let add_icon = document.querySelector(".icon.add")
     let add_dialog = document.querySelector(".add-dialog")
 
@@ -85,11 +118,25 @@
     saveButton_add_dialog.addEventListener("click", async () => {
          let all_inputs = document.querySelectorAll("dialog.add-dialog .entry input")
          let serializedInputs = {};
-         console.log("serialize before")
             for (let i = 0; i < all_inputs.length; i++) {
               const input = all_inputs[i];
+
+              if(input.name == "image"){
+                serializedInputs[input.name] = input.files[0].name;
+
+              }
+              else{
               serializedInputs[input.name] = input.value;
+              }
             }
+
+            let all_button_inputs = document.querySelectorAll("dialog.add-dialog .buttons button")
+            for (let i = 0; i < all_button_inputs.length; i++) {
+              const input = all_button_inputs[i];
+              serializedInputs[input.dataset.name] = input.classList.contains("active") ? true : false
+            }
+
+            console.log("serializedInputs: ", serializedInputs)
 
         const response = await fetch('/food', {
             method: 'POST',
@@ -113,7 +160,6 @@
 
     let image = document.querySelector('#select-image-input')
     image.addEventListener("change", async function(){
-        alert("hello")
         const selectedImage = this.files[0];
         console.log("selectedImage: ", selectedImage)
 
@@ -128,6 +174,20 @@
 
     })
 
+
+    let speciality_buttons = document.querySelectorAll(".add-dialog .main-content .buttons button")
+    console.log("speciality_buttons: ", speciality_buttons)
+    speciality_buttons.forEach(function(button){
+        button.addEventListener("click", function(e){
+            if(this.classList.contains("active")){this.classList.remove("active")}
+            else{this.classList.add("active")}
+
+
+
+
+        })
+
+    })
 
 
 </script>

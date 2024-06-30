@@ -32,7 +32,7 @@
         }
 
 
-    .crawl-jobs-container{
+    .search-products-container{
         display: flex;
         justify-content: center;
         margin-top: 15px;
@@ -50,7 +50,8 @@
     }
 
     .content .pop-out{
-        display: absolute;
+        position: relative;
+        flex-shrink: 0
     }
     .pop-out .burger-menu {
         //width: 30px;

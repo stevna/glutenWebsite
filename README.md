@@ -24,7 +24,13 @@ eis produkt het folgendes:
  - en discounter --> chönti anhand vom ort automatisch ihfülle
  - 3 stichwörter --> freitext
  - priis --> eh float
-
+ - 
+ - vegetarisch
+ - vegan
+ - laktosefrei
+ - kann spuren enthalten
+ - --> die sölled mit so ahklickbare buttons dingslet werde --> das chönti als bild mache
+ich chönt es bild erzüge loh über dalee wenn de nutzer keis bild mache
 
 eh bewertig --> stern --> das chönd aber all, das mues ine separati db --> nei mues nid. aber eich wär jo no spannen
  wele user wie bewertet het

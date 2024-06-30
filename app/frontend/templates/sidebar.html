@@ -1,28 +1,36 @@
-
-
 <div class="inputs-container">
-    <h3>Neue Jobs Suche</h3>
+    <h3>Produkte Suche</h3>
     <div class="input">
-        Voll Text
-        <input type="text" name="filter_fulltext" value="{{search_filter.get('filter_fulltext', '')}}" placeholder="z.B Sozialarbeiter">
+        Produkt Name
+        <input type="text" name="name" value="" placeholder="z.B. Brot">
     </div>
 
     <div class="input">
-        Ort
-        <input type="text" name="filter_place" value="{{search_filter.get('filter_place', '')}}" placeholder="z.B. schaffhausen,zürich">
+        Kaufort
+        <input type="text" name="buy_place" value="" placeholder="z.B. Zürich">
     </div>
 
     <div class="input">
         Preis
         <div class="row" style="width: 200px">
-            <input style="width: 80px" type="text" name="filter_from_range" value="{{search_filter.get('filter_from_range', '')}}" placeholder="z.B. 50">
+            <input style="width: 80px" type="text" name="price_from_range" value="" placeholder="z.B. 1.15">
             bis
-            <input style="width: 80px" type="text" name="filter_to_range" value="{{search_filter.get('filter_to_range', '')}}" placeholder="z.B. 100">
+            <input style="width: 80px" type="text" name="price_to_range" value="" placeholder="z.B. 5.00">
         </div>
     </div>
 
+    <div class="input checkboxes">
+         <div class="input">
+            Jobs.ch
+            <input type="checkbox" name="filter_source_jobsch">
+        </div>
+    </div>
 
+    <div class="search-products-container">
+        <button id="search-products"><img src="static/icons/search-line.svg"></button>
     </div>
 
 
 </div>
+
+

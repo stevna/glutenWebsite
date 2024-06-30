@@ -1,3 +1,5 @@
 {
-  "host": "localhost"
+  "host": "localhost",
+  "upload_folder": "C:\\Users\\steve\\workplace\\glutenWebsite\\image_uploads"
+
 }

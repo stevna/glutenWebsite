@@ -1,0 +1,25 @@
+<div class="all-products">
+    {% for product in all_products %}
+    <div class="product-container"
+         style="background-image:url({{url_for('lulu.static', filename=product.image)}}); background-size:cover">
+        <div class="product-information">
+            <div class="info-container"><span class="label">Name: </span> <span class="info">{{product.name}}</span>
+            </div>
+            <!--                <div class="info-container"><span class="label">Kaufkette: </span> <span-->
+            <!--                        class="info">{{product.vendor}}</span></div>-->
+            <div class="info-container"><span class="label">Kaufort: </span> <span
+                    class="info">{{product.buy_place}}</span>
+            </div>
+            <div class="info-container"><span class="label">Preis: </span> <span
+                    class="info">{{product.price}}</span></div>
+
+        </div>
+
+
+    </div>
+
+
+    {% endfor %}
+
+
+</div>

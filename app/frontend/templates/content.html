@@ -1,14 +1,57 @@
 {% extends "base.html" %}
 {% block content %}
 
+<style>
+
+    .all-products-container{
+        width: 100%;
+    }
+    .all-products{
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+    .all-products{
+        width: 100%;
+    }
+
+    .product-container{
+        width: 33%;
+        height: 400px;
+        border: solid black;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .product-container .product-information{
+    background-color: white;
+    color: black;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    }
+
+     .product-container .product-information .info-container{
+        display: flex;
+        justify-content:
+        }
+
+    .product-container .product-information .info-container span:first-child{
+        width: 100px;
+        flex-shrink: 0;
+        }
+
+
+</style>
+
 <section class="content">
     <div class="pop-out left">
         <div class="burger-menu">
             <img src="static/icons/menu-fold-fill.svg">
         </div>
 
-<!--        {% include "sidebar.html" %}-->
-
+                {% include "sidebar.html" %}
 
 
     </div>
@@ -17,14 +60,15 @@
         <img src="static/icons/menu-unfold-fill.svg">
     </div>
 
-    <div class="all_jobs">
-<!--        {% include "all_jobs.html" %}-->
+    <div class="all-products-container">
+        {% include "all_products.html" %}
+
     </div>
+
 </section>
 
 
 <script type="application/javascript">
-
 
 
 </script>

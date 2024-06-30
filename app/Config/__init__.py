@@ -8,12 +8,13 @@ import json
 class AppConfig:
     host: str = "mongodb"
     username: str = ""
-    passowrd: str = ""
+    password: str = ""
     port: int = 27016
     database: str = "GlutenWebsite"
     server_port: str = ""
-
-    upload_folder = 'C:\\Users\\steve\\workplace\\glutenWebsite\\image_uploads'
+    upload_folder:str = ''
+    product_categories: list = field(default_factory=lambda: ["Süss", "Salzig", "Sauer", "Bitter"])
+    specialities: list = field(default_factory=lambda: ["Vegetarisch", "Vegan", "Kann Gluten Spuren enthalten"])
 
 
 Config = AppConfig()

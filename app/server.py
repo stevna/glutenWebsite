@@ -10,6 +10,11 @@ import re
 from forms.register import Register
 from forms.login import Login
 import os
+from Product import ProductEntry
+from pprint import pprint
+from pathlib import Path
+from flask.blueprints import Blueprint
+from backend import controller
 
 
 
@@ -20,6 +25,7 @@ app.secret_key = "lululalalelelellaeiafaefaefaef"
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+bp = Blueprint("lulu", __name__, static_folder="../image_uploads", static_url_path="res")
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -31,20 +37,43 @@ def load_user(user_id):
 def index():
     return redirect(url_for('login'))
 
-@app.route("/home")
+@bp.route("/home")
 def home():
+    all_products = Collection("Products").find({})
+    product_objects = [ProductEntry.convert_to_product(product) for product in all_products]
+
     variables = {
-        "search_filter": {}
-
-
+        "all_products": product_objects,
     }
+
     return render_template("content.html", **variables)
+
+@app.route("/filter-products", methods=['GET'])
+def filtered_products():
+    filtered_products: list = controller.filter_products(request.args.to_dict())
+    filtered_product_objects = [ProductEntry.convert_to_product(product) for product in filtered_products]
+
+    variables = {
+        "all_products": filtered_product_objects,
+    }
+
+    return render_template("all_products.html", **variables)
+
 
 @app.route("/food", methods=['GET', 'POST'])
 def add_food():
     data: dict = request.get_json()
+    buy_place = data.get("buy_place", "" )
+    if buy_place:
+        vendor = buy_place.split(" ")[0]
+        if "," in vendor:
+            vendor = vendor.replace(",", "")
+        print("vendor: ", vendor)
+        data["vendor"] = vendor
 
-    print("request.json: ", request.get_json())
+    Collection("Products").insert_one(data)
+
+
 
 @app.route("/upload-image", methods=['POST'])
 def upload_image():
@@ -102,15 +131,12 @@ def logout():
     return redirect('/login')
 
 
-@app.route("/user/balance", methods=['GET'])
-def get_user_balance():
-    print(str(current_user.get_balance()))
-    return str(current_user.get_balance()), 200
-
-
 def encode_url(url):
     return urllib.parse.quote(url)
 
+
+
+app.register_blueprint(bp, url_prefix="/")
 
 
 if __name__ == '__main__':
